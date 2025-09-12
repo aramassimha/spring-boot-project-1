@@ -1,3 +1,3 @@
-FROM openjdk:17-jre-slim
+FROM openjdk:17-jre
 COPY target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
