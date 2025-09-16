@@ -5,10 +5,10 @@ COPY src ./src
 COPY pom.xml .
 #Run tests and build the JAR
 RUN mvn clean package && \
-    rm -rf /root/.m2/repository
+    rm -rf /root/.m2/repository  # ← ADD THIS LINE
 
 #Stage 2: Create a final runtime image
-FROM openjdk:17-jre-slim
+FROM openjdk:17-jre-slim  # ← CHANGE THIS LINE
 WORKDIR /app
 #COPY the build JAR from the builder stage
 COPY --from=builder /app/target/*.jar app.jar
