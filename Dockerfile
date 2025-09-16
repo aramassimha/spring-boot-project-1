@@ -8,7 +8,7 @@ RUN mvn clean package && \
     rm -rf /root/.m2/repository
 
 #Stage 2: Create a final runtime image
-FROM openjdk:17-jre-slim  # ← CHANGE THIS LINE
+FROM openjdk:17-jre-slim
 WORKDIR /app
 #COPY the build JAR from the builder stage
 COPY --from=builder /app/target/*.jar app.jar
