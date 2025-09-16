@@ -4,7 +4,8 @@ WORKDIR /app
 COPY src ./src
 COPY pom.xml .
 #Run tests and build the JAR
-RUN mvn clean package
+RUN mvn clean package && \
+    rm -rf /root/.m2/repository
 
 #Stage 2: Create a final runtime image
 FROM openjdk:17-jre-slim
